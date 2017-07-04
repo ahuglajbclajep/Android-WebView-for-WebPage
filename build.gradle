@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+task zip(type: Exec) {
+    commandLine('git', 'archive', '-o', 'build/' + rootProject.name + '_src.zip', 'HEAD')
+    // Document for the 'git archive' command can be found at 'https://git-scm.com/docs/git-archive'.
+    // This task will fail if the 'build' folder does not exist.
+}
