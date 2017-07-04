@@ -2,7 +2,7 @@ package ahuglajbclajep.android.webview.showmypage;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,6 +10,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        WebView webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("https://ajax-qrcode-springboot.herokuapp.com");
     }
 }
