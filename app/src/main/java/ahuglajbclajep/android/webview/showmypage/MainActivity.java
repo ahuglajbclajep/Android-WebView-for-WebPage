@@ -1,6 +1,7 @@
 package ahuglajbclajep.android.webview.showmypage;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -36,7 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageStarted (WebView view, String url, Bitmap favicon) {
-                loading = ProgressDialog.show(MainActivity.this, "Now Loading", "please wait");
+                loading = ProgressDialog.show(MainActivity.this, "Now Loading", "please wait", true, true,
+                    new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            webView.stopLoading();
+                            onBackPressed();
+                        }
+                    });
             }
 
             @Override
