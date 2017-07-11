@@ -26,12 +26,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageStarted (WebView view, String url, Bitmap favicon) {
-                loading = ProgressDialog.show(MainActivity.this, "web page", "now loading...");
+                loading = ProgressDialog.show(MainActivity.this, "Now Loading", "please wait");
             }
 
             @Override
             public void onPageFinished (WebView view, String url) {
                 loading.dismiss();
+            }
+
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                Toast.makeText(MainActivity.this, "Connection failed...", Toast.LENGTH_SHORT).show();
             }
         });
         webView.setWebChromeClient(new WebChromeClient() {
