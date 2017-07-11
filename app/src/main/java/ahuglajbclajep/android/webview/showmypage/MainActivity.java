@@ -26,6 +26,21 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient() {
             private ProgressDialog loading;
 
+            {
+                loading = new ProgressDialog(MainActivity.this);
+                loading.setTitle("Now Loading");
+                loading.setMessage("please wait");
+                loading.setIndeterminate(true);
+                loading.setCancelable(true);
+                loading.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        webView.stopLoading();
+                        onBackPressed();
+                    }
+                });
+            }
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (Uri.parse(getString(R.string.url)).getHost().equals(Uri.parse(url).getHost())) return false;
@@ -37,14 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageStarted (WebView view, String url, Bitmap favicon) {
-                loading = ProgressDialog.show(MainActivity.this, "Now Loading", "please wait", true, true,
-                    new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            webView.stopLoading();
-                            onBackPressed();
-                        }
-                    });
+                loading.show();
             }
 
             @Override
