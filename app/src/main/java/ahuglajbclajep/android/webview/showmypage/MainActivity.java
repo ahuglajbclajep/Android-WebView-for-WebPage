@@ -1,7 +1,9 @@
 package ahuglajbclajep.android.webview.showmypage;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.JsResult;
@@ -9,6 +11,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private WebView webView;
@@ -22,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             private ProgressDialog loading;
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (Objects.equals(Uri.parse(url).getHost(), Uri.parse(getString(R.string.url)).getHost())) return false;
+
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                return true;
+            }
 
             @Override
             public void onPageStarted (WebView view, String url, Bitmap favicon) {
