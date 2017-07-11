@@ -12,8 +12,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import java.util.Objects;
-
 public class MainActivity extends AppCompatActivity {
     private WebView webView;
 
@@ -29,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (Objects.equals(Uri.parse(url).getHost(), Uri.parse(getString(R.string.url)).getHost())) return false;
+                if (Uri.parse(getString(R.string.url)).getHost().equals(Uri.parse(url).getHost())) return false;
 
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                if (intent.resolveActivity(getPackageManager()) != null) startActivity(intent);
                 return true;
             }
 
