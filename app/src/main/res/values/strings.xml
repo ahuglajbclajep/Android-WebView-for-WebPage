@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Show MyPage</string>
-    <string name="url">https://ajax-qrcode-springboot.herokuapp.com</string>
+
+    <string name="load_url">https://ajax-qrcode-springboot.herokuapp.com</string>
+    <string name="loading_dialog_title">Now Loading</string>
+    <string name="loading_dialog_message">please wait</string>
+    <string name="received_error_message">Application can\'t resolve requests…</string>
 </resources>

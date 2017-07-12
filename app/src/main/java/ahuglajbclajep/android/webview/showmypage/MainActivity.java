@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
             {
                 loading = new ProgressDialog(MainActivity.this);
-                loading.setTitle("Now Loading");
-                loading.setMessage("please wait");
+                loading.setTitle(getText(R.string.loading_dialog_title));
+                loading.setMessage(getText(R.string.loading_dialog_message));
                 loading.setIndeterminate(true);
                 loading.setCancelable(true);
                 loading.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -62,19 +62,19 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                Toast.makeText(MainActivity.this, "Connection failed...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, getText(R.string.received_error_message), Toast.LENGTH_SHORT).show();
             }
         });
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-                result.cancel();
+                result.confirm();
                 return true;
             }
         });
 
-        webView.loadUrl(getString(R.string.url));
+        webView.loadUrl(getString(R.string.load_url));
     }
 
     @Override
