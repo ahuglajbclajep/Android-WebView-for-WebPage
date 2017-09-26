@@ -21,9 +21,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-task zip(type: Exec) {
-    commandLine('git', 'archive', '-o', 'build/' + rootProject.name + '_src.zip', 'HEAD')
-    // Document for the 'git archive' command can be found at 'https://git-scm.com/docs/git-archive'.
-    // This task will fail if the 'build' folder does not exist.
-}
