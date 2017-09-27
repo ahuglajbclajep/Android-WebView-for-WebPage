@@ -1,4 +1,4 @@
-package ahuglajbclajep.android.webview.showmypage;
+package ahuglajbclajep.android.webviewforwebpage;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;

@@ -1,4 +1,4 @@
-# android-webview-example
+# Android webView for WebPage
 * Show loading progess.
 * Show JavaScript alert as toast.
 * Use device *Back* button to navigate page history backward.
@@ -10,7 +10,7 @@ This application displays [my heroku app page](https://ajax-qrcode-springboot.he
 
 ### Install & Open
 ```sh
-git clone https://github.com/ahuglajbclajep/android-webview-example.git
+git clone https://github.com/ahuglajbclajep/Android-WebView-for-WebPage.git
 studio android-webview-example
 ```
 
