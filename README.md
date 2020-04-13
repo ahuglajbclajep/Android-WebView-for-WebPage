@@ -1,18 +1,16 @@
-# Android webView for WebPage
-* Show loading progess.
-* Show JavaScript alert as toast.
-* Use device *Back* button to navigate page history backward.
-* Orientation change without reloading the page.
-* Can handle `received error`.
+# android-webview-example
 
-## Usage
-This application displays [my heroku app page](https://ajax-qrcode-springboot.herokuapp.com) for demo. You can change page URL in `strings.xml`.
+A simple example of displaying a web page using [WebView](https://developer.android.com/reference/android/webkit/WebView).
 
-### Install & Open
-```sh
-git clone https://github.com/ahuglajbclajep/Android-WebView-for-WebPage.git
-studio android-webview-example
-```
+## Features
+
+- Show loading progess
+- Show [window.alert()](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) as [Toast](https://developer.android.com/guide/topics/ui/notifiers/toasts)
+- Use the back button on the device to go back to the previous page
+- Orientation change without reloading the page
+
+The URL of the page to be displayed can be changed in [strings.xml](app/src/main/res/values/strings.xml).
 
 ## License
+
 [Apache-2.0](LICENSE)
